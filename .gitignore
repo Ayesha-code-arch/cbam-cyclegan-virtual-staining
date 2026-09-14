@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+*.egg-info/
+
+# data and large artifacts stay out of version control
+data/
+outputs/
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

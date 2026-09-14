@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "Bidirectional Translation Between ISH and H&E Glioblastoma Tissue Sections via Attention-Enhanced CycleGAN"
+authors:
+  - family-names: "Shahzad"
+    given-names: "Ayesha"
+    affiliation: "Kingston University London"
+  - family-names: "Koukoutegos"
+    given-names: "Konstantinos"
+    affiliation: "Indiana University School of Medicine"
+  - family-names: "Makris"
+    given-names: "Dimitrios"
+    affiliation: "Kingston University London"
+  - family-names: "Bakas"
+    given-names: "Spyridon"
+    affiliation: "Indiana University School of Medicine"
+year: 2026
+keywords:
+  - virtual staining
+  - CycleGAN
+  - glioblastoma
+  - in situ hybridization
+  - H&E
+  - CBAM
+  - IvyGAP
+license: MIT
+repository-code: "https://github.com/Ayesha-codearch/cbam-cyclegan-virtual-staining"

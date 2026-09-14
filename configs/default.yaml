@@ -1,0 +1,46 @@
+# Default configuration — reproduces the CD44 model reported in the paper.
+# Override any field from the CLI, e.g.:
+#   python -m src.train --config configs/default.yaml --data_root /path/to/patches
+
+data:
+  data_root: "./data/patches_512"      # expects {train,val,test}/{ISH,HE}
+  image_size: 512
+  batch_size: 4
+  num_workers: 4
+  steps_per_epoch: 5000
+
+model:
+  input_nc: 3
+  output_nc: 3
+  ngf: 64
+  ndf: 64
+  n_blocks: 9
+  cbam_every: 3                        # insert CBAM after every N-th residual block
+
+optim:
+  lr_g: 0.0002
+  lr_d: 0.0001                         # half of lr_g, prevents early discriminator dominance
+  beta1: 0.5
+  n_epochs: 50                         # constant learning rate
+  n_epochs_decay: 30                   # linear decay to zero
+  grad_clip: 1.0
+  pool_size: 50
+
+loss:
+  lambda_cycle: 10.0
+  lambda_identity: 0.5
+  lambda_cycle_ssim: 2.0
+  lambda_cycle_edge: 1.0
+
+eval:
+  val_batches: 125
+  full_eval_freq: 10                   # epochs between FID/KID/LPIPS passes
+  early_stop_patience: 15              # epochs without val_G improvement
+
+output:
+  checkpoint_dir: "./outputs/checkpoints"
+  sample_dir: "./outputs/samples"
+  results_dir: "./outputs/results"
+  log_path: "./outputs/training_log.csv"
+
+seed: 42
