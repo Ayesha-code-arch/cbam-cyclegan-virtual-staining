@@ -1,4 +1,4 @@
-"""Flat config loader — reads a YAML file into a single namespace and
+"""Flat config loader. Reads a YAML file into a single namespace and
 applies dotted-key CLI overrides (e.g. `optim.lr_g=0.0001`)."""
 
 import argparse

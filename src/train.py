@@ -382,7 +382,7 @@ class Trainer:
                 print(f"early stopping at epoch {epoch + 1}")
                 break
 
-        print(f"training complete — best_val_G={self.best_val_loss:.4f}  best_fid={self.best_fid:.2f}")
+        print(f"training complete, best_val_G={self.best_val_loss:.4f}  best_fid={self.best_fid:.2f}")
 
 
 _inception_cache = {}

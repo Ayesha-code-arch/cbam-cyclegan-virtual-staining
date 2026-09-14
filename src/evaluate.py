@@ -2,7 +2,7 @@
 
 Computes FID and KID in both translation directions, LPIPS for
 ISH -> H&E, and cycle SSIM / PSNR for both domains, on the full
-validation or test cohort — matching the protocol used to select
+validation or test cohort, matching the protocol used to select
 checkpoints in the paper (Sect. 2.5).
 
 Usage:

@@ -1,4 +1,4 @@
-# Default configuration — reproduces the CD44 model reported in the paper.
+# Default configuration, reproduces the CD44 model reported in the paper.
 # Override any field from the CLI, e.g.:
 #   python -m src.train --config configs/default.yaml --data_root /path/to/patches
 
