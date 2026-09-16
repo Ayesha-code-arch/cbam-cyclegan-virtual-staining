@@ -9,3 +9,4 @@ lpips>=0.1.4
 pytorch-fid>=0.3.0
 torch-fidelity>=0.3.0
 torchmetrics>=1.2
+huggingface_hub>=0.24

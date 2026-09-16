@@ -148,6 +148,30 @@ All hyperparameters (architecture width, loss weights, learning rates, schedule)
 
 ---
 
+## Pretrained checkpoints
+
+The two checkpoints reported in the paper are hosted on Hugging Face: **[ashshaz/cbam-cyclegan-virtual-staining](https://huggingface.co/ashshaz/cbam-cyclegan-virtual-staining)**.
+
+| File | Epoch | Recommended direction | Test FID | Test cycle SSIM |
+|---|---|---|---|---|
+| `ckpt_0020.pth` | 20 | ISH → H&E | 34.359 | 0.974 |
+| `ckpt_0042.pth` | 42 | H&E → ISH | 29.577 | 0.976 |
+
+```python
+import torch
+from huggingface_hub import hf_hub_download
+from src.networks import Generator, strip_compile_prefix
+
+checkpoint_path = hf_hub_download(repo_id="ashshaz/cbam-cyclegan-virtual-staining", filename="ckpt_0020.pth")
+state = torch.load(checkpoint_path, map_location="cpu")
+
+g_ab = Generator(ngf=64, n_blocks=9, cbam_every=3)
+g_ab.load_state_dict(strip_compile_prefix(state["G_AB"]))
+g_ab.eval()
+```
+
+---
+
 ## Results
 
 ### Test-set performance (CD44)
