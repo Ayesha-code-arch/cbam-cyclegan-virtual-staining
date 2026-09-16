@@ -146,6 +146,16 @@ python -m src.evaluate --config configs/default.yaml \
 
 All hyperparameters (architecture width, loss weights, learning rates, schedule) live in [`configs/default.yaml`](configs/default.yaml) and can be overridden per-run with `--set key.subkey=value`.
 
+**4. Translate a folder of images with a trained checkpoint:**
+
+Open [`scripts/run_inference.py`](scripts/run_inference.py), set `CHECKPOINT_PATH`, `INPUT_DIR`, `DIRECTION` (`ish2he` or `he2ish`), and `EXPERIMENT_NAME` at the top of the file, then run:
+
+```bash
+python scripts/run_inference.py
+```
+
+Translated JPGs (quality 100, original filenames preserved) are written to `experiment_outputs/<EXPERIMENT_NAME>/`.
+
 ---
 
 ## Pretrained checkpoints

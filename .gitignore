@@ -8,6 +8,7 @@ venv/
 # data and large artifacts stay out of version control
 data/
 outputs/
+experiment_outputs/
 checkpoints/
 *.pth
 *.pt
