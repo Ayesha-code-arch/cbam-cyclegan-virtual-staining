@@ -21,7 +21,7 @@ from .attention import CBAM
 class ResnetBlock(nn.Module):
     def __init__(self, channels: int):
         super().__init__()
-        self.block = nn.Sequential(
+        self.b = nn.Sequential(
             nn.ReflectionPad2d(1),
             nn.Conv2d(channels, channels, kernel_size=3, bias=True),
             nn.InstanceNorm2d(channels),
@@ -32,7 +32,7 @@ class ResnetBlock(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return x + self.block(x)
+        return x + self.b(x)
 
 
 class Generator(nn.Module):

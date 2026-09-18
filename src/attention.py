@@ -14,16 +14,16 @@ class ChannelAttention(nn.Module):
 
     def __init__(self, channels: int, reduction: int = 16):
         super().__init__()
-        self.avg_pool = nn.AdaptiveAvgPool2d(1)
-        self.max_pool = nn.AdaptiveMaxPool2d(1)
-        self.mlp = nn.Sequential(
+        self.avg = nn.AdaptiveAvgPool2d(1)
+        self.max = nn.AdaptiveMaxPool2d(1)
+        self.fc = nn.Sequential(
             nn.Conv2d(channels, channels // reduction, kernel_size=1, bias=False),
             nn.ReLU(inplace=True),
             nn.Conv2d(channels // reduction, channels, kernel_size=1, bias=False),
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        gate = self.mlp(self.avg_pool(x)) + self.mlp(self.max_pool(x))
+        gate = self.fc(self.avg(x)) + self.fc(self.max(x))
         return x * torch.sigmoid(gate)
 
 
@@ -46,8 +46,8 @@ class CBAM(nn.Module):
 
     def __init__(self, channels: int, reduction: int = 16):
         super().__init__()
-        self.channel_attention = ChannelAttention(channels, reduction)
-        self.spatial_attention = SpatialAttention()
+        self.ca = ChannelAttention(channels, reduction)
+        self.sa = SpatialAttention()
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.spatial_attention(self.channel_attention(x))
+        return self.sa(self.ca(x))
